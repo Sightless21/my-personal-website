@@ -44,8 +44,13 @@
 		left: 0;
 		width: 100%;
 		z-index: 10;
-		background: rgba(0, 18, 51, 0.8);
 		backdrop-filter: blur(10px);
 		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	}
+	footer {
+		position: relative;
+		z-index: 10;
+		backdrop-filter: blur(10px);
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
 	}
 </style>

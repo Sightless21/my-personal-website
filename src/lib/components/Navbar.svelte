@@ -4,6 +4,7 @@
 	import Button from './ui/button/button.svelte';
 	
 	let isMenuOpen = $state(false);
+	let activeLink = $state('#home'); // Track active link
 
 	function toggleMenu() {
 		isMenuOpen = !isMenuOpen;
@@ -11,6 +12,11 @@
 
 	function closeMenu() {
 		isMenuOpen = false;
+	}
+
+	function setActiveLink(href) {
+		activeLink = href;
+		closeMenu(); // Close menu when clicking on mobile
 	}
 
 	const navLinks = [
@@ -44,13 +50,22 @@
 				{#each navLinks as link}
 					<a
 						href={link.href}
-						class="group relative rounded-md px-3 xl:px-4 py-2 font-mono text-sm text-emerald-200 transition-all duration-200 hover:bg-white/10 hover:text-green-400"
+						onclick={() => setActiveLink(link.href)}
+						class="group relative rounded-md px-3 xl:px-4 py-2 font-mono text-sm transition-all duration-200 hover:bg-white/10 {activeLink === link.href 
+							? 'text-green-400 bg-green-500/10 border border-green-400/30' 
+							: 'text-emerald-200 hover:text-green-400 border border-transparent'}"
 						title={link.description}
 					>
 						<span class="relative z-10">{link.text}</span>
-						<div
-							class="absolute inset-0 rounded-md bg-gradient-to-r from-green-500/20 to-blue-500/20 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-						></div>
+						{#if activeLink === link.href}
+							<div class="absolute inset-0 rounded-md bg-gradient-to-r from-green-500/20 to-emerald-500/20"></div>
+						{:else}
+							<div class="absolute inset-0 rounded-md bg-transparent outline opacity-0 transition-opacity duration-200 group-hover:opacity-100"></div>
+						{/if}
+						<!-- Active indicator dot -->
+						{#if activeLink === link.href}
+							<div class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-green-400 rounded-full animate-pulse"></div>
+						{/if}
 					</a>
 				{/each}
 			</div>
@@ -60,13 +75,22 @@
 				{#each navLinks as link}
 					<a
 						href={link.href}
-						class="group relative rounded-md px-2 py-2 font-mono text-xs text-emerald-400 transition-all duration-200 hover:bg-white/10 hover:text-green-300"
+						onclick={() => setActiveLink(link.href)}
+						class="group relative rounded-md px-2 py-2 font-mono text-xs transition-all duration-200 hover:bg-white/10 {activeLink === link.href 
+							? 'text-green-300 bg-green-500/10 border border-green-400/30' 
+							: 'text-emerald-400 hover:text-green-300 border border-transparent'}"
 						title={link.description}
 					>
 						<span class="relative z-10">{link.text}</span>
-						<div
-							class="absolute inset-0 rounded-md bg-gradient-to-r from-green-500/20 to-blue-500/20 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-						></div>
+						{#if activeLink === link.href}
+							<div class="absolute inset-0 rounded-md bg-gradient-to-r from-green-500/20 to-emerald-500/20"></div>
+						{:else}
+							<div class="absolute inset-0 rounded-md bg-gradient-to-r from-green-500/20 to-blue-500/20 opacity-0 transition-opacity duration-200 group-hover:opacity-100"></div>
+						{/if}
+						<!-- Active indicator dot -->
+						{#if activeLink === link.href}
+							<div class="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-green-400 rounded-full animate-pulse"></div>
+						{/if}
 					</a>
 				{/each}
 			</div>
@@ -124,12 +148,20 @@
 					{#each navLinks as link}
 						<a
 							href={link.href}
-							onclick={closeMenu}
-							class="block rounded-lg px-4 py-3 font-mono text-sm text-green-400 transition-all duration-200 hover:bg-white/10 hover:text-green-300 border border-transparent hover:border-green-400/20"
+							onclick={() => setActiveLink(link.href)}
+							class="block rounded-lg px-4 py-3 font-mono text-sm transition-all duration-200 hover:bg-white/10 {activeLink === link.href 
+								? 'text-green-300 bg-green-500/10 border border-green-400/30' 
+								: 'text-green-400 hover:text-green-300 border border-transparent hover:border-green-400/20'}"
 						>
-							<div class="flex flex-col">
-								<span class="font-medium">{link.text}</span>
-								<span class="mt-1 text-xs text-gray-400">{link.description}</span>
+							<div class="flex items-center justify-between">
+								<div class="flex flex-col">
+									<span class="font-medium">{link.text}</span>
+									<span class="mt-1 text-xs text-gray-400">{link.description}</span>
+								</div>
+								<!-- Active indicator for mobile -->
+								{#if activeLink === link.href}
+									<div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+								{/if}
 							</div>
 						</a>
 					{/each}
