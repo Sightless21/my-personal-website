@@ -67,7 +67,7 @@
 
 		<div
 			bind:this={terminalRef}
-			class="flex-1 overflow-y-auto bg-[#0c0c0e] p-2 sm:p-4 font-mono text-xs sm:text-sm text-green-300"
+			class="flex-1 overflow-y-auto bg-zinc-800 p-2 sm:p-4 font-mono text-xs sm:text-sm text-green-300"
 		>
 			<!-- Welcome message -->
 			<div class="mb-4">

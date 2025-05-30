@@ -55,7 +55,7 @@
   });
 </script>
 
-<section class="relative min-h-screen overflow-hidden px-4 py-20">
+<section class="relative min-h-screen overflow-hidden p-4">
   <div class="relative mx-auto max-w-7xl">
     <!-- Enhanced Header with Animation -->
     <header class="mb-20 text-center">

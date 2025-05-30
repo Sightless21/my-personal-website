@@ -15,7 +15,7 @@
               )}"
               target="_blank"
               rel="noopener noreferrer"
-              class="text-emerald-200 hover:underline transition-colors duration-200"
+              class="text-white hover:underline transition-colors duration-200"
             >
               {tool.name}
             </a>
