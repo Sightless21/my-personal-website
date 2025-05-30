@@ -4,6 +4,7 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import Hero from '$lib/components/sections/Hero.svelte';
 	import About from '$lib/components/sections/About.svelte';
+	import Contact from '$lib/components/sections/Contact.svelte';
 </script>
 
 <div class="w-full px-4 sm:px-6 lg:px-8">
@@ -11,4 +12,6 @@
 	<Hero />
 	<!-- About -->
 	<About />
+	<!-- Contact -->
+	<Contact />
 </div>

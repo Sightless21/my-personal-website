@@ -61,10 +61,9 @@
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
 	<div
-		class="cursor-text overflow-hidden rounded-lg border border-gray-800 shadow-2xl w-full h-full flex flex-col"
-		onclick={focusTerminal}
+		class="overflow-hidden rounded-lg border border-gray-800 shadow-2xl w-full h-full flex flex-col"
 	>
-		<TerminalHeader />
+		<TerminalHeader title={"~/sightlessdev"} />
 
 		<div
 			bind:this={terminalRef}
